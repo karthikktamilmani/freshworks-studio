@@ -1,13 +1,87 @@
+@import './variables';
+@import url('https://fonts.googleapis.com/css?family=Roboto:400,500,600,700,800');
+
+
 body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+    display: flex;
+    font-weight: 400;
+    background-color: $primary-background !important;
+    font-family: 'Roboto', sans-serif !important;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+label,
+span {
+    font-family: 'Roboto', sans-serif;
+}
+
+a {
+  color: $link-color !important;
+}
+
+h1,
+h2,
+h3 {
+  font-weight: 400 !important;
+  color: $font-color !important;
+}
+
+.btn-primary {
+  background-color: $link-color !important;
+  border-color: $link-color !important;
+}
+
+.form-control:focus {
+  border-color: $link-color !important;
+  box-shadow: 0 0 0 0.2rem rgba(55, 34, 211, 0.2) !important;
+}
+
+.form-group {
+  margin-bottom: 1.8rem !important;
+  label {
+    font-weight: 500;
+    margin-bottom: 0.1rem !important;
+    color: $dark-grey-color;
+  }
+}
+
+.table .thead-dark th {
+  background-color: $link-color !important;
+  border-color: $link-color !important;
+  color: $light-white !important;
+}
+
+.table td {
+  color: $dark-grey-color !important;
+}
+
+input[type="time"] {
+  &:after {
+      content: "\25BC";
+      color: $link-color;
+      padding: 0 5px;
+      font-size: 10px;
+  }
+
+  &::-webkit-calendar-picker-indicator {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      width: auto;
+      height: auto;
+      color: transparent;
+      background: transparent;
+  }
+
+  &::-webkit-inner-spin-button, &::-webkit-clear-button {
+      z-index: 1;
+  }
 }

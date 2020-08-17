@@ -1,38 +1,83 @@
-.App {
+@import './variables';
+
+#root {
+  width: 100%;
+}
+
+/* Autosuggest */
+.react-autosuggest__container {
+  position: relative;
+
+  .react-autosuggest__suggestions-container {
+    position: absolute;
+    width: 100%;
+    z-index: 1000;
+  }
+}
+
+ul.react-autosuggest__suggestions-list {
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  padding-left: 0;
+  margin-bottom: 0;
+  border-radius: .25rem;
+
+  li {
+    position: relative;
+    display: block;
+    padding: .75rem 1.25rem;
+    background-color: #fff;
+    border: 1px solid rgba(0,0,0,.125);
+    cursor: pointer;
+
+    &:hover {
+      background-color: $link-color;
+      color: #fff;
+    }
+  }
+}
+
+/* Nav tabs */
+
+.nav-tabs .nav-link {
+  color: $font-color !important;
+
+  &.active {
+    border: none !important;
+    color: $primary-color !important;
+    border-bottom: 3px solid $primary-color !important;
+  }
+}
+
+
+/* repeat schedule styling */
+.repeat-option {
+  margin-right: 10px;
+
+  .form-check-input {
+    visibility: hidden;
+  }
+
+  .form-check-label {
+    width: 50px;
+    height: 50px;
+    cursor: pointer;
+    border-radius: 50%;
     text-align: center;
-}
+    font-size: 13px;
+    border: 2px solid $primary-color;
+    color: $font-color !important;
 
-.App-logo {
-    height: 40vmin;
-    pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-    .App-logo {
-        animation: App-logo-spin infinite 20s linear;
+    span {
+      position: relative;
+      top: 13px;
     }
-}
+  }
 
-.App-header {
-    background-color: #282c34;
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    font-size: calc(10px + 2vmin);
-    color: white;
-}
-
-.App-link {
-    color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-    from {
-        transform: rotate(0deg);
-    }
-    to {
-        transform: rotate(360deg);
-    }
+   input[type=checkbox]:checked + .form-check-label {
+     color: #fff !important;
+     background-color: $primary-color;
+   }
 }
