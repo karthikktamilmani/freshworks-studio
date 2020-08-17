@@ -1,13 +1,6 @@
 const { Sequelize, DataTypes } = require('sequelize');
 
 const Location = sequelize.define('Location', {
-    // Model attributes are defined here
-    // LOCATION_ID: {
-    //     primaryKey: true,
-    //     type: Sequelize.UUID,
-    //     defaultValue: Sequelize.UUIDV4,
-    //     unique: true
-    // },
     LOCATION: {
         type: DataTypes.STRING,
         allowNull: false
@@ -15,11 +8,6 @@ const Location = sequelize.define('Location', {
 });
 
 const Food = sequelize.define('Food', {
-    // FOOD_ID: {
-    //     primaryKey: true,
-    //     type: Sequelize.UUID,
-    //     defaultValue: Sequelize.UUIDV4
-    // },
     FOOD: {
         type: DataTypes.STRING,
         allowNull: false
@@ -27,11 +15,6 @@ const Food = sequelize.define('Food', {
 });
 
 const FoodKind = sequelize.define('FoodKind', {
-    // FOOD_KIND_ID: {
-    //     primaryKey: true,
-    //     type: Sequelize.UUID,
-    //     defaultValue: Sequelize.UUIDV4
-    // },
     FOOD_KIND: {
         type: DataTypes.STRING,
         allowNull: false
@@ -39,24 +22,24 @@ const FoodKind = sequelize.define('FoodKind', {
 });
 
 const FeedData = sequelize.define('FeedData', {
-    LocationId: {
+    LOCATION_ID: {
         type: Sequelize.INTEGER,
         references: {
-            model: 'Locations',
+            model: 'Location',
             key: 'id',
         }
     },
-    FoodId: {
+    FOOD_ID: {
         type: Sequelize.INTEGER,
         references: {
             model: 'Food',
             key: 'id',
         }
     },
-    FoodKindId: {
+    FOOD_KIND_ID: {
         type: Sequelize.INTEGER,
         references: {
-            model: 'FoodKinds',
+            model: 'FoodKind',
             key: 'id',
         }
     },
@@ -74,13 +57,14 @@ const FeedData = sequelize.define('FeedData', {
     }
 });
 
-Location.hasMany(FeedData);
-FoodKind.hasMany(FeedData);
-Food.hasMany(FeedData);
-
-sequelize.sync({ alter: true, force: true }).then(() => {
-    console.log("All models were synchronized successfully.");
-}).catch((err) => {
+FeedData.belongsTo(Location, { foreignKey: "LOCATION_ID" });
+FeedData.belongsTo(FoodKind, { foreignKey: "FOOD_KIND_ID" });
+FeedData.belongsTo(Food, { foreignKey: "FOOD_ID" });
+Location.hasMany(FeedData, { foreignKey: "LOCATION_ID" });
+FoodKind.hasMany(FeedData, { foreignKey: "FOOD_KIND_ID" });
+Food.hasMany(FeedData, { foreignKey: "FOOD_ID" });
+// { alter: true, force: true }
+sequelize.sync().catch((err) => {
     console.log(`Error while synchronizing tables ${err}`)
 })
 

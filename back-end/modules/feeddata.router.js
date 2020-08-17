@@ -3,14 +3,18 @@ const express = require('express');
 
 // Import controllers
 const {
-    addFeedData
+    addFeedData,
+    getSuggestionInformation,
+    getAllFeedData
 } = require('./feeddata.controller');
 
 // Revealing module pattern
 const router = () => {
     const feedDataRouter = express.Router();
 
-    feedDataRouter.route('/addData').post(addFeedData);
+    feedDataRouter.route('/feed').post(addFeedData);
+    feedDataRouter.route('/suggestions').get(getSuggestionInformation);
+    feedDataRouter.route('/feed').get(getAllFeedData);
 
     return feedDataRouter;
 }
