@@ -4,7 +4,8 @@
     "description": "",
     "main": "app.js",
     "scripts": {
-        "test": "echo \"Error: no test specified\" && exit 1"
+        "test": "jest --config ./jest.config.js --forceExit --coverage",
+        "start": "node app.js"
     },
     "author": "",
     "license": "ISC",
@@ -16,5 +17,9 @@
         "pg": "^8.3.0",
         "pg-hstore": "^2.3.3",
         "sequelize": "^6.3.4"
+    },
+    "devDependencies": {
+        "jest": "^26.4.0",
+        "sequelize-mock": "^0.10.2"
     }
 }

@@ -10,9 +10,6 @@ AWS = require('aws-sdk');
 AWS.config.update({ region: "us-east-1" });
 cwevents = new AWS.CloudWatchEvents({ apiVersion: '2015-10-07' });
 lambda = new AWS.Lambda();
-LAMBDA_ARN = "arn:aws:lambda:us-east-1:235997159748:function:my-fun";
-RULE_ARN = "arn:aws:iam::235997159748:role/lambda_trigger";
-LAMBDA_FUNCTION_NAME = "my-fun";
 
 sequelize = new Sequelize(process.env.DB_NAME, process.env.DB_USERNAME, process.env.DB_PASSWORD, {
     //host: 'database-1.cbwg6worpedy.us-east-1.rds.amazonaws.com',
@@ -41,5 +38,9 @@ const feedDataRouter = require('./modules/feeddata.router')();
 app.use(feedDataRouter);
 
 app.listen(port, () => {
-    console.log(`Example app listening at http://localhost:${port}`)
+    console.log(`App listening at http://localhost:${port}`)
 })
+
+
+// https://master.dkv6x991aoa6l.amplifyapp.com/
+// http://node-express-env.eba-cth7sfse.us-east-1.elasticbeanstalk.com/

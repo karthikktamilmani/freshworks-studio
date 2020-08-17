@@ -1,0 +1,5 @@
+SCHEDULER_LAMBDA_ARN = "arn:aws:lambda:us-east-1:235997159748:function:my-fun";
+EVENTBRIDGE_RULE_ARN = "arn:aws:iam::235997159748:role/lambda_trigger";
+SCHEDULER_LAMBDA_FUNCTION_NAME = "my-fun";
+
+module.exports = { SCHEDULER_LAMBDA_ARN, EVENTBRIDGE_RULE_ARN, SCHEDULER_LAMBDA_FUNCTION_NAME }
