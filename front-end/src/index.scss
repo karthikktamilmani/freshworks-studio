@@ -37,19 +37,31 @@ h3 {
   border-color: $link-color !important;
 }
 
-.form-control:focus {
-  border-color: $link-color !important;
-  box-shadow: 0 0 0 0.2rem rgba(55, 34, 211, 0.2) !important;
-}
+.add-form {
+  .form-control:focus {
+    border-color: $link-color !important;
+    box-shadow: 0 0 0 0.2rem rgba(55, 34, 211, 0.2) !important;
+  }
 
-.form-group {
-  margin-bottom: 1.8rem !important;
-  label {
-    font-weight: 500;
-    margin-bottom: 0.1rem !important;
-    color: $dark-grey-color;
+  .form-group {
+    margin-bottom: 1.8rem !important;
+    label {
+      max-width: 290px;
+      font-weight: 500;
+      margin-bottom: 0.1rem !important;
+      color: $dark-grey-color;
+    }
+  }
+
+  .spacing-helper {
+    max-width: 290px;
+  }
+
+  .col-md-9 {
+    max-width: 500px;
   }
 }
+
 
 .table .thead-dark th {
   background-color: $link-color !important;

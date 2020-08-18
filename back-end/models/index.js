@@ -1,7 +1,7 @@
-import FeedData from "./feeddata";
-import Location from "./location";
-import Food from "./food";
-import FoodKind from "./foodkind";
+const FeedData = require("./feeddata");
+const Location = require("./location");
+const Food = require("./food");
+const FoodKind = require("./foodkind");
 
 FeedData.belongsTo(Location, { foreignKey: "LOCATION_ID" });
 FeedData.belongsTo(FoodKind, { foreignKey: "FOOD_KIND_ID" });
@@ -13,3 +13,5 @@ Food.hasMany(FeedData, { foreignKey: "FOOD_ID" });
 sequelize.sync().catch((err) => {
     console.log(`Error while synchronizing tables ${err}`)
 })
+
+module.exports = { Location, FeedData, Food, FoodKind };

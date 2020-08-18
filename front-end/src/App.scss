@@ -53,26 +53,44 @@ ul.react-autosuggest__suggestions-list {
 
 
 /* repeat schedule styling */
+.repeat-option-wrapper {
+  flex-wrap: wrap;
+  display: flex;
+  transition: opacity .3s;
+  &.show {
+    opacity: 1;
+  }
+
+  &.hide {
+    opacity: 0;
+  }
+}
+
+.form-check {
+  margin-top: 10px;
+}
+
 .repeat-option {
   margin-right: 10px;
+  margin-top: 10px;
 
   .form-check-input {
     visibility: hidden;
   }
 
   .form-check-label {
-    width: 50px;
-    height: 50px;
+    width: 42px;
+    height: 43px;
     cursor: pointer;
     border-radius: 50%;
     text-align: center;
-    font-size: 13px;
+    font-size: 12px;
     border: 2px solid $primary-color;
     color: $font-color !important;
 
     span {
       position: relative;
-      top: 13px;
+      top: 10px;
     }
   }
 
@@ -80,4 +98,17 @@ ul.react-autosuggest__suggestions-list {
      color: #fff !important;
      background-color: $primary-color;
    }
+}
+
+@media (max-width: 767px) {
+  .repeat-option-wrapper {
+    display: none;
+
+    &.show {
+      display: flex;
+    }
+  }
+  div.w-75 {
+    width: 100%!important;
+  }
 }

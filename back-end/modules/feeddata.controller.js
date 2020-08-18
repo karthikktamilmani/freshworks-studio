@@ -1,7 +1,4 @@
-const FeedData = require("../models/feeddata");
-const Location = require("../models/location");
-const Food = require("../models/food");
-const FoodKind = require("../models/foodkind");
+const { FeedData, Location, Food, FoodKind } = require("../models");
 const addSchedule = require("./scheduler");
 
 const findOrCreateLocation = async(location) => {

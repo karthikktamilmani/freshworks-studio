@@ -108,87 +108,100 @@ export default class AddForm extends Component {
   render() {
     return (
       <div className="flex mt-4">
-        <form className="needs-validation" id="add-form" onSubmit={this.handleSubmit} noValidate>
-          <div className="form-group">
-            <label htmlFor="numberDucksFed">Number of Ducks Fed</label>
-            <input
-              type="number"
-              className="form-control"
-              id="numberDucksFed"
-              min="1"
-              placeholder="1"
-              required
-            />
-          <div className="invalid-feedback">
-            Please input a valid number.
-          </div>
-          </div>
-
-          <div className="form-group position-relative">
-            <label htmlFor="timeFed">Time Fed</label>
-            <input
-              type="time"
-              className="form-control"
-              id="timeFed"
-              required
-              name="timeFed"
-            />
-            <div className="invalid-feedback">
-              Please select a time.
-            </div>
-          </div>
-          <div className="form-group">
-            <label htmlFor="fedLocation">Location where they are fed</label>
-            <AutoSuggestInput
-              defaultValues={this.state.suggestions.location}
-              placeholderValue="Near Seaside"
-              name="fedLocation"
-              required
-              id="fedLocation"
-            ></AutoSuggestInput>
-          </div>
-
-          <div className="form-group">
-            <label htmlFor="food">What food were fed</label>
-
-            <AutoSuggestInput
-              defaultValues={this.state.suggestions.food}
-              placeholderValue="Grapes"
-              name="food"
-              required
-              id="food"
-            ></AutoSuggestInput>
-          </div>
-
-          <div className="form-group">
-            <label htmlFor="foodKind">What kind of food were fed</label>
-            <AutoSuggestInput
-              defaultValues={this.state.suggestions.foodKind}
-              placeholderValue="Fruits"
-              name="foodKind"
-              required
-              id="foodKind"
-            ></AutoSuggestInput>
-          </div>
-
-          <div className="form-group">
-            <label htmlFor="foodQuantity">How much food were fed</label>
-            <input
-              type="number"
-              className="form-control"
-              id="foodQuantity"
-              name="foodQuantity"
-              placeholder="1"
-              min="1"
-              required
-            />
-            <div className="invalid-feedback">
-              Please input a valid quantity.
+        <form className="needs-validation add-form" id="add-form" onSubmit={this.handleSubmit} noValidate>
+          <div className="form-group row">
+            <label className="col-md-3" htmlFor="numberDucksFed">Number of Ducks Fed</label>
+            <div className="col-md-9">
+              <input
+                type="number"
+                className="form-control"
+                id="numberDucksFed"
+                name="numberDucksFed"
+                min="1"
+                placeholder="1"
+                required
+                />
+              <div className="invalid-feedback">
+                Please input a valid number.
+              </div>
             </div>
           </div>
 
-          <div className="form-group mb-2">
-            <div className="form-check">
+          <div className="form-group position-relative row">
+            <label htmlFor="timeFed" className="col-md-3">Time Fed</label>
+            <div className="col-md-9">
+              <input
+                type="time"
+                className="form-control"
+                id="timeFed"
+                required
+                name="timeFed"
+                />
+              <div className="invalid-feedback">
+                Please select a time.
+              </div>
+            </div>
+          </div>
+          <div className="form-group row">
+            <label htmlFor="fedLocation" className="col-md-3">Location where they are fed</label>
+            <div className="col-md-9">
+              <AutoSuggestInput
+                defaultValues={this.state.suggestions.location}
+                placeholderValue="Near Seaside"
+                name="fedLocation"
+                required
+                id="fedLocation"
+                ></AutoSuggestInput>
+            </div>
+          </div>
+
+          <div className="form-group row">
+            <label htmlFor="food" className="col-md-3">What food were fed</label>
+            <div className="col-md-9">
+              <AutoSuggestInput
+                defaultValues={this.state.suggestions.food}
+                placeholderValue="Grapes"
+                name="food"
+                required
+                id="food"
+                ></AutoSuggestInput>
+            </div>
+          </div>
+
+          <div className="form-group row">
+            <label htmlFor="foodKind" className="col-md-3">What kind of food were fed</label>
+            <div className="col-md-9">
+              <AutoSuggestInput
+                defaultValues={this.state.suggestions.foodKind}
+                placeholderValue="Fruits"
+                name="foodKind"
+                required
+                id="foodKind"
+                ></AutoSuggestInput>
+            </div>
+          </div>
+
+          <div className="form-group row">
+            <label htmlFor="foodQuantity" className="col-md-3">How much food were fed</label>
+            <div className="col-md-9">
+              <input
+                type="number"
+                className="form-control"
+                id="foodQuantity"
+                name="foodQuantity"
+                placeholder="1"
+                min="1"
+                required
+                />
+              <div className="invalid-feedback">
+                Please input a valid quantity.
+              </div>
+            </div>
+
+          </div>
+
+          <div className="form-group row ml-0">
+            <div className="form-check col-md-3">
               <input
                 className="form-check-input"
                 type="checkbox"
@@ -200,40 +213,46 @@ export default class AddForm extends Component {
                 Repeat
               </label>
             </div>
-          </div>
-          <div
-            style={
-              this.state.isRepeatable ? {display: "flex"} : {display: "none"}
-            }
-            className="align-items-start form-group"
-          >
-            {this.repeatOptions.map((item, index) => (
-              <div key={index} className="repeat-option">
-                <input
-                  className="form-check-input"
-                  type="checkbox"
-                  name="repeatSchedule"
-                  value={item.shortlabel}
-                  id={item.shortlabel}
-                />
-                <label
-                  className="form-check-label"
-                  htmlFor={item.shortlabel}
-                  aria-label={item.label}
-                >
-                  <span>{item.shortlabel}</span>
-                </label>
-              </div>
-            ))}
+
+            <div
+              className={
+                this.state.isRepeatable ? "show align-items-start form-group repeat-option-wrapper col-md-9 pl-0" : "hide align-items-start form-group repeat-option-wrapper col-md-9 pl-0"
+              }
+            >
+              {this.repeatOptions.map((item, index) => (
+                <div key={index} className="repeat-option">
+                  <input
+                    className="form-check-input"
+                    type="checkbox"
+                    name="repeatSchedule"
+                    value={item.shortlabel}
+                    id={item.shortlabel}
+                  />
+                  <label
+                    className="form-check-label"
+                    htmlFor={item.shortlabel}
+                    aria-label={item.label}
+                  >
+                    <span>{item.shortlabel}</span>
+                  </label>
+                </div>
+              ))}
+            </div>
           </div>
 
-          <button
-            className="btn btn-primary btn-lg btn-block mt-4"
-            type="submit"
-            disabled={this.state.isSaving}
-            >
-            <span>{this.state.isSaving ? 'Saving..' : 'Save'}</span>
-          </button>
+
+          <div className="btn-toolbar row">
+            <div className="spacing-helper col-md-3"></div>
+            <div className="col-md-9">
+              <button
+                className="btn btn-primary btn-lg btn-block"
+                type="submit"
+                disabled={this.state.isSaving}
+                >
+                <span>{this.state.isSaving ? 'Saving..' : 'Save'}</span>
+              </button>
+            </div>
+          </div>
         </form>
       </div>
     );

@@ -1,13 +1,13 @@
 const express = require('express')
 const app = express()
-const port = process.env.PORT || 3000
+const port = process.env.PORT || 8000
 const bodyParser = require('body-parser');
 const { Sequelize } = require('sequelize');
 const cors = require('cors');
 
 
 AWS = require('aws-sdk');
-AWS.config.update({ region: "us-east-1" });
+AWS.config.update({ region: "us-east-1", accessKeyId: process.env.ACCESS_KEY_ID, secretAccessKey: process.env.SECRET_ACCESS_KEY });
 cwevents = new AWS.CloudWatchEvents({ apiVersion: '2015-10-07' });
 lambda = new AWS.Lambda();
 
